@@ -1,0 +1,52 @@
+{
+    "configuration": {
+        "monitorInterval": 30,
+        "name": "Default",
+        "appenders": {
+            "Console": {
+                "name": "Console-Appender",
+                "target": "SYSTEM_OUT",
+                "PatternLayout": {
+                    "pattern": "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1}:%L - %msg%n"
+                }
+            },
+            "RollingFile": {
+                "name": "File",
+                "fileName": "/opt/logs/mfa-app.log",
+                "filePattern": "/opt/logs/mfa-app.log-%d{MM-dd-yy-HH-mm-ss}-%i.log",
+                "PatternLayout": {
+                    "pattern": "%d{yyyy-MM-dd HH:mm:ss} %-5p [%t] %c{1}:%L - %m%n"
+                },
+                "Policies": {
+                    "SizeBasedTriggeringPolicy": {
+                        "size": "20 MB"
+                    }
+                },
+                "DefaultRolloverStrategy": {
+                    "max": "100"
+                }
+            }
+        },
+        "loggers": {
+            "root": {
+                "level": "debug",
+                "appender-ref": [
+                    {
+                        "ref": "File",
+                        "level": "INFO"
+                    },
+                    {
+                        "ref": "Console-Appender",
+                        "level": "INFO"
+                    }
+                ]
+            },
+            "logger": [
+                {
+                    "name": "org.hibernate.engine.internal.StatisticalLoggingSessionEventListener",
+                    "level": "fatal"
+                }
+            ]
+        }
+    }
+}
