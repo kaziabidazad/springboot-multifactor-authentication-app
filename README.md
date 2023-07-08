@@ -7,6 +7,6 @@ This app uses TOTP Algorithm to perform the 2nd Factor Authentication. Any TOTP 
 </p>
 <h3> Below is the simple design of the components used: </h3>
 <p align="center">
-  <img src="docs/MFA_App_Design.svg" />
+  <img src="docs/MFA_App_Design_1.svg" />
 </p>
 
